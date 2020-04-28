@@ -1,8 +1,8 @@
 import React from 'react'
 import { useSelector, useDispatch } from "react-redux"
 import { unlikeCountry } from '../data/favoriteCountries'
-import { IconButton } from '@material-ui/core'
-import { ThumbDown } from '@material-ui/icons/';
+import { Favorite } from '@material-ui/icons/';
+import { IconButton, Card, CardHeader, CardMedia, CardContent, Typography, Grid } from '@material-ui/core'
 
 
 export default () => {
@@ -14,24 +14,43 @@ export default () => {
     console.log(likedData)
     return (
         <>
-            <h2>Your liked countries</h2>
-            {likedData.length === 0 && <p>No liked countries</p>}
+            <Typography variant="h4" color="textSecondary" style={{margin: ".6em 0"}}>Your liked countries</Typography>
+            {likedData.length === 0 && <Typography variant="body2" color="textSecondary" component="p">No liked countries</Typography>}
             {likedData.length !== 0 && (
-              <ul>
-                {likedData.map(likedCountry => (
-                  <li key={likedCountry.numericCode}>
-                    {likedCountry.name} ({likedCountry.capital})
-                    <IconButton 
-                        style={{color:"blue"}} 
-                        onClick={unlikeHandler(likedCountry.name)}
+              <Grid container spacing={4} direction="column">
+              {likedData.map(country => (
+                <Grid item >
+                  <Card>
+                    <Grid container>
+                      <Grid item xs={4}>
+                        <CardMedia image={country.flag} title="Flag" style={{height: "50px", width: "80px"}}/>
+                      </Grid>
+                      <Grid item xs={4}>
+                        <CardHeader title={country.name} />
+                      </Grid>
+                      <Grid item xs={4}>
+                        <IconButton 
+                            style={{color:"blue"}} 
+                            onClick={unlikeHandler(country.name)}
                         >
-                        <ThumbDown fontSize="small"/>
-                    </IconButton>
-                    {/* <button onClick={unlikeHandler(likedCountry.name)}>Unlike</button> */}
-                  </li>
-                ))}
-              </ul>
+                          <Favorite fontSize="large"/>
+                        </IconButton>
+                      </Grid>
+                    </Grid>
+                    
+                    
+                    <CardContent>
+                        <Typography variant="body2" color="textSecondary" component="p">Capital: {country.capital}</Typography>
+                        {country.population >= 1000000 && <Typography variant="body2" color="textSecondary" component="p">Population: {(country.population / 1000000).toFixed(2)} million</Typography>}
+                        {country.population < 1000000 && <Typography variant="body2" color="textSecondary" component="p">Population: {country.population}</Typography>}
+                        <Typography variant="body2" color="textSecondary" component="p">Region: {country.subregion} - {country.region}</Typography>
+                    </CardContent>
+                  </Card>
+                </Grid>
+              ))}
+          </Grid>
             )}
         </>
     )
 }
+

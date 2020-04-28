@@ -1,6 +1,17 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: rgba(184, 182, 182, 0.2);
+}
+
 .error {
   background-color: red;
 }
 
 li { list-style: none }
 
+.form {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+}
