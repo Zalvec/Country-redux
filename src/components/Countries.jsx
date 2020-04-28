@@ -28,7 +28,7 @@ export default () => {
                         <Card>
                           <Grid container>
                             <Grid item xs={4}>
-                              <CardMedia image={country.flag} title="Flag" style={{height: "50px", width: "80px"}}/>
+                              <CardMedia image={country.flag} title="Flag" style={{height: "70px", width: "105px"}}/>
                             </Grid>
                             <Grid item xs={4}>
                               <CardHeader title={country.name} />
@@ -39,7 +39,7 @@ export default () => {
                                     style={{color:"blue"}} 
                                     onClick={likeHandler(country)}
                                 >
-                                    <FavoriteBorder fontSize="large"/>
+                                    <FavoriteBorder fontSize="large" className="globalColor"/>
                                 </IconButton>
                               }
                               {arrLikedCountries.includes(`${country.name}`) && 
@@ -47,7 +47,7 @@ export default () => {
                                     style={{color:"blue"}} 
                                     onClick={unlikeHandler(country.name)}
                                 >
-                                    <Favorite fontSize="large"/>
+                                    <Favorite fontSize="large" className="globalColor"/>
                                 </IconButton>
                               }
                             </Grid>

@@ -8,6 +8,13 @@ body {
   background-color: red;
 }
 
+.globalBackgroundColor {
+  background-color: rgb(19, 151, 90) !important;
+}
+.globalColor {
+  color:  rgb(19, 151, 90) !important;
+}
+
 li { list-style: none }
 
 .form {

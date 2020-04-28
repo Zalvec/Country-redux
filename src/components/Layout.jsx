@@ -9,7 +9,7 @@ export default () => {
         <>
             <Box>
                 <AppBar position="static">
-                    <Toolbar>
+                    <Toolbar className="globalBackgroundColor">
                         <Typography variant="h6" style={{ margin: "0 auto" }} >
                         Country-liker
                         </Typography>
